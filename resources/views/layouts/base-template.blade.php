@@ -92,7 +92,7 @@
                 "responsive": true,
                 "lengthChange": false,
                 "autoWidth": false,
-                "buttons": ["csv", "excel", "pdf", "print", "colvis"]
+                "buttons": ["csv", "excel", "pdf", "print"]
             }).buttons().container().appendTo('#dataTable_1_wrapper .col-md-6:eq(0)');
             $('#dataTable2').DataTable({
                 "paging": true,

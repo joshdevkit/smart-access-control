@@ -13,13 +13,8 @@ return new class extends Migration
     {
         Schema::create('logs', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('student_id');
-            $table->unsignedBigInteger('subject_id');
-            $table->text('details')->nullable();
+            $table->string('logs_info');
             $table->timestamps();
-
-            $table->foreign('student_id')->references('id')->on('users')->onDelete('cascade');
-            $table->foreign('subject_id')->references('id')->on('subjects')->onDelete('cascade');
         });
     }
 
