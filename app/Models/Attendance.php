@@ -13,7 +13,8 @@ class Attendance extends Model
         'student_id',
         'subject_id',
         'instructor_id',
-        'status'
+        'status',
+        'attendance_time'
     ];
 
 

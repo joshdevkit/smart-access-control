@@ -12,7 +12,8 @@ class SubjectsController extends Controller
      */
     public function index()
     {
-        //
+        $subjs = Subjects::all();
+        return view('admin.subjects.index', compact('subjs'));
     }
 
     /**
@@ -20,7 +21,7 @@ class SubjectsController extends Controller
      */
     public function create()
     {
-        //
+        // No separate view required since it's handled by the modal
     }
 
     /**
@@ -28,7 +29,15 @@ class SubjectsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'subject' => 'required|string|max:255',
+        ]);
+
+        Subjects::create([
+            'subject' => $request->input('subject'),
+        ]);
+
+        return redirect()->route('subjects.index')->with('success', 'Subject added successfully.');
     }
 
     /**
@@ -36,7 +45,7 @@ class SubjectsController extends Controller
      */
     public function show(Subjects $subjects)
     {
-        //
+        // Not needed for this CRUD example
     }
 
     /**
@@ -44,22 +53,32 @@ class SubjectsController extends Controller
      */
     public function edit(Subjects $subjects)
     {
-        //
+        // No separate view required since it's handled by the modal
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Subjects $subjects)
+    public function update(Request $request)
     {
-        //
+        $validated = $request->validate([
+            'id' => 'required|integer|exists:subjects,id',
+            'subject' => 'required|string|max:255',
+        ]);
+
+        $subject = Subjects::findOrFail($validated['id']);
+
+        $subject->subject = $validated['subject'];
+        $subject->save();
+
+        return redirect()->route('subjects.index')->with('success', 'Subject updated successfully.');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(Subjects $subjects)
+    public function destroy($id)
     {
-        //
+        $subject = Subjects::findOrFail($id);
+        $subject->delete();
+
+        return redirect()->route('subjects.index')->with('success', 'Subject deleted successfully.');
     }
 }

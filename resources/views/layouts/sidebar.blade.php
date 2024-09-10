@@ -86,6 +86,13 @@
                         </a>
                     </li>
                     <li class="nav-item">
+                        <a href="{{ route('subjects.index') }}"
+                            class="nav-link {{ Route::currentRouteName() == 'subjects.index' ? 'active' : '' }}">
+                            <i class="nav-icon fas fa-book"></i>
+                            <p>Subjects</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
                         <a href="{{ route('logs.index') }}"
                             class="nav-link {{ Route::currentRouteName() == 'logs.index' ? 'active' : '' }}">
                             <i class="nav-icon fas fa-cog"></i>

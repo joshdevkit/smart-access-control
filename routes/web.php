@@ -13,6 +13,7 @@ use App\Http\Controllers\FacultyStudentsController;
 use App\Http\Controllers\FacultySubjectsController;
 use App\Http\Controllers\LogsController;
 use App\Http\Controllers\StudentsOwnedController;
+use App\Http\Controllers\SubjectsController;
 use App\Http\Controllers\UsersController;
 use App\Http\Controllers\YearSectionController;
 
@@ -30,6 +31,7 @@ Route::middleware(['auth'])->group(function () {
         Route::resource('faculty', FacultyController::class);
         Route::resource('faculty-subject', FacultySubjectsController::class);
         Route::resource('faculty-students', FacultyStudentsController::class);
+        Route::resource('subjects', SubjectsController::class);
         Route::put('/faculty-subject/update/{faculty_subject}', [FacultySubjectsController::class, 'update'])->name('faculty-subject.update');
 
         Route::resource('year-sections', YearSectionController::class);
