@@ -14,8 +14,8 @@
     <link rel="stylesheet" href="{{ asset('layout/plugins/select2/css/select2.min.css') }}">
     <script src="{{ asset('layout/plugins/jquery/jquery.min.js') }}"></script>
     <script src="{{ asset('layout/plugins/select2/js/select2.full.min.js') }}"></script>
-    <!-- Scripts -->
-    @vite(['resources/sass/app.scss', 'resources/js/app.js'])
+    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+    <script src="{{ asset('js/bootstrap.bundle.min.js') }}"></script>
     <script>
         $(function() {
             $('.select2').select2()
